@@ -1,0 +1,93 @@
+{
+  "name": "kinvey-nativescript-sdk",
+  "version": "3.4.5",
+  "description": "Kinvey JavaScript SDK for nativescript applications.",
+  "homepage": "http://www.kinvey.com",
+  "bugs": {
+    "url": "https://github.com/Kinvey/nativescript-sdk/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "Kinvey",
+  "contributors": [
+    "Thomas Conner <thomas@kinvey.com>"
+  ],
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Kinvey/nativescript-sdk"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run transpile && npm run bundle && npm run minify",
+    "bundle": "webpack",
+    "clean": "del coverage dist s3",
+    "minify": "uglifyjs --screw-ie8 --compress warnings=false --mangle --comments --output ./dist/kinvey-nativescript-sdk.min.js -- ./dist/kinvey-nativescript-sdk.js ",
+    "cover": "istanbul cover _mocha -- --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/index test/unit",
+    "docs": "esdoc -c esdoc.json",
+    "e2e:server": "appium",
+    "e2e:prepare:app": "cd ./test/e2e/app",
+    "e2e:build:app:ios": "npm run e2e:prepare:app && npm run build && cd ./test/e2e/app && tns build ios",
+    "e2e:test:ios": "npm run e2e:build:app:ios && wdio ./test/e2e/test/wdio.conf.js",
+    "lint": "npm run lint:src",
+    "lint:src": "eslint src/**",
+    "lint:test": "eslint test/unit/**",
+    "preversion": "del node_modules && npm install && npm test",
+    "postversion": "git push && git push --tags",
+    "s3": "npm run build && shjs ./scripts/s3.js",
+    "test": "mocha --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/index test/unit",
+    "test:watch": "mocha -w --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/index test/unit",
+    "transpile": "babel src --out-dir dist"
+  },
+  "dependencies": {
+    "core-js": "2.4.1",
+    "es6-promise": "4.1.0",
+    "kinvey-html5-sdk": "3.4.5",
+    "kinvey-js-sdk": "3.4.5",
+    "lodash": "4.17.4",
+    "nativescript-sqlite": "^1.1.3"
+  },
+  "peerDependencies": {
+    "kinvey-html5-sdk": "3.4.5",
+    "kinvey-js-sdk": "3.4.5"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.0",
+    "babel-core": "6.24.0",
+    "babel-eslint": "7.1.1",
+    "babel-plugin-inline-dotenv": "^1.1.1",
+    "babel-plugin-module-resolver": "2.5.0",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.0.15",
+    "babel-register": "6.24.0",
+    "del-cli": "^0.2.0",
+    "eslint": "3.17.1",
+    "eslint-config-airbnb-base": "11.1.1",
+    "eslint-import-resolver-babel-module": "3.0.0",
+    "eslint-plugin-import": "2.2.0",
+    "expect": "1.20.2",
+    "fs-extra": "2.1.1",
+    "istanbul": "1.1.0-alpha.1",
+    "json-loader": "^0.5.4",
+    "kinvey-html5-sdk": "3.4.1",
+    "kinvey-js-sdk": "3.4.2",
+    "mocha": "3.2.0",
+    "nock": "9.0.9",
+    "regenerator-runtime": "0.10.3",
+    "request": "2.81.0",
+    "shelljs": "^0.7.4",
+    "uglify-js": "^2.7.3",
+    "wdio-dot-reporter": "0.0.7",
+    "wdio-mocha-framework": "0.5.9",
+    "wdio-spec-reporter": "0.1.0",
+    "webdriverio": "^4.2.5",
+    "webpack": "^1.13.0"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "keywords": [
+    "Kinvey",
+    "JavaScript",
+    "nativescript"
+  ]
+}

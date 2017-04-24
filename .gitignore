@@ -1,0 +1,28 @@
+# NodeJS
+.npm_cache
+node_modules
+npm-debug.log
+
+# Src files
+docs
+
+# Build Files
+.tmp
+tmp
+s3
+dist/*
+!dist/kinvey-nativescript-sdk.js
+!dist/kinvey-nativescript-sdk.min.js
+
+# Test Files
+coverage
+report.xml
+*.tap
+test/e2e/app/platforms
+test/e2e/app/plugins
+test/e2e/test/screenshots
+
+# MacOS Files
+.DS_Store
+shots
+local.log
