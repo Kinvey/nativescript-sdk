@@ -8,7 +8,7 @@ var BANNER = '/**\n'
   + ' * ' + pkg.description + '\n'
   + ' * ' + pkg.homepage + '\n'
   + ' *\n'
-  + ' * Copyright (c) 2016, ' + pkg.author + '.\n'
+  + ' * Copyright (c) 2017, ' + pkg.author + '.\n'
   + ' * All rights reserved.\n'
   + ' *\n'
   + ' * Released under the ' + pkg.license + ' license.\n'
@@ -17,6 +17,12 @@ var BANNER = '/**\n'
 module.exports = {
   context: path.resolve(__dirname, 'dist'),
   entry: './index.js',
+  externals: {
+    'nativescript-sqlite': 'umd nativescript-sqlite'
+  },
+  node: {
+    fs: 'empty'
+  },
   module: {
     loaders: [
       { test: /\.json$/, loader: 'json-loader' }
