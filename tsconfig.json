@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es6"],
+    "module": "umd",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "files": [
+    "src/kinvey.d.ts"
+  ]
+}
