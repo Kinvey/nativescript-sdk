@@ -18,9 +18,7 @@ dist/*
 coverage
 report.xml
 *.tap
-test/e2e/app/platforms
-test/e2e/app/plugins
-test/e2e/test/screenshots
+test/e2e/app
 
 # MacOS Files
 .DS_Store
