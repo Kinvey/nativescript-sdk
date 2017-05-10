@@ -37224,27 +37224,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	          var sql = parts[0].replace('#{collection}', escapedCollection);
 
 	          return prev.then(function () {
+	            if (write === false) {
+	              return db.all(sql, parts[1]);
+	            }
+
 	            return db.execSQL(sql, parts[1]);
 	          }).then(function () {
 	            var resultSet = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
-	            var response = {
-	              result: []
-	            };
-
-	            if (resultSet.length > 0) {
+	            if (write === false && (0, _isArray2.default)(resultSet) && resultSet.length > 0) {
 	              for (var i = 0, len = resultSet.length; i < len; i += 1) {
 	                try {
-	                  var value = resultSet[i];
-	                  var entity = isMaster ? value : JSON.parse(value);
-	                  response.result.push(entity);
+	                  var row = resultSet[i];
+	                  var entity = isMaster ? row.value : JSON.parse(row.value);
+	                  responses.push(entity);
 	                } catch (error) {
 	                  // Catch the error
 	                }
 	              }
+	            } else if (write === true) {
+	              responses.push(resultSet);
 	            }
 
-	            responses.push(response);
 	            return responses;
 	          });
 	        }, _es6Promise2.default.resolve());
@@ -37254,9 +37255,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'find',
 	    value: function find(collection) {
 	      var sql = 'SELECT value FROM #{collection}';
-	      return this.openTransaction(collection, sql, []).then(function (response) {
-	        return response.result;
-	      }).catch(function () {
+	      return this.openTransaction(collection, sql, []).catch(function () {
 	        return [];
 	      });
 	    }
@@ -37266,9 +37265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this = this;
 
 	      var sql = 'SELECT value FROM #{collection} WHERE key = ?';
-	      return this.openTransaction(collection, sql, [id]).then(function (response) {
-	        return response.result;
-	      }).then(function (entities) {
+	      return this.openTransaction(collection, sql, [id]).then(function (entities) {
 	        if (entities.length === 0) {
 	          throw new _export.NotFoundError('An entity with _id = ' + id + ' was not found in the ' + collection + (' collection on the ' + _this.name + ' SQLite database.'));
 	        }
@@ -37310,8 +37307,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var queries = [['SELECT value FROM #{collection} WHERE key = ?', [id]], ['DELETE FROM #{collection} WHERE key = ?', [id]]];
 	      return this.openTransaction(collection, queries, null, true).then(function (response) {
-	        var entities = response[0].result;
-	        var count = response[1].rowCount;
+	        var entities = response[0];
+	        var count = response[1];
 	        count = count || entities.length;
 
 	        if (count === 0) {
@@ -37326,9 +37323,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function clear() {
 	      var _this3 = this;
 
-	      return this.openTransaction(masterCollectionName, 'SELECT name AS value FROM #{collection} WHERE type = ?', ['table'], false).then(function (response) {
-	        return response.result;
-	      }).then(function (tables) {
+	      return this.openTransaction(masterCollectionName, 'SELECT name AS value FROM #{collection} WHERE type = ?', ['table'], false).then(function (tables) {
 	        // If there are no tables, return.
 	        if (tables.length === 0) {
 	          return null;
