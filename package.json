@@ -40,7 +40,7 @@
     "core-js": "2.4.1",
     "es6-promise": "4.1.0",
     "kinvey-html5-sdk": "3.5.0",
-    "kinvey-js-sdk": "file:///Users/Thomas/Documents/Kinvey/Development/SDKs/JavaScript/Core/SDK",
+    "kinvey-js-sdk": "3.5.0",
     "lodash": "4.17.4"
   },
   "peerDependencies": {
