@@ -18,7 +18,10 @@ module.exports = {
   context: path.resolve(__dirname, 'dist'),
   entry: './index.js',
   externals: {
-    'nativescript-sqlite': 'umd nativescript-sqlite'
+    'application': 'umd application',
+    'nativescript-advanced-webview': 'umd nativescript-advanced-webview',
+    'nativescript-sqlite': 'umd nativescript-sqlite',
+    'utils/utils': 'umd utils/utils'
   },
   node: {
     fs: 'empty'
