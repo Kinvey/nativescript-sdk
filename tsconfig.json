@@ -1,16 +1,31 @@
 {
-  "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": ["es6"],
-    "module": "umd",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "target": "es5"
-  },
-  "files": [
-    "src/kinvey.d.ts"
-  ]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "paths": {
+            "*": [
+                "./node_modules/tns-core-modules/*",
+                "./node_modules/*"
+            ]
+        },
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "target": "es5"
+    },
+    "files": [
+        "index.ts"
+    ],
+    "compileOnSave": false,
+    "exclude": [
+        "node_modules",
+        "platforms"
+    ]
 }

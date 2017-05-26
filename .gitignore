@@ -4,21 +4,12 @@ node_modules
 npm-debug.log
 
 # Src files
-docs
-
-# Build Files
-.tmp
-tmp
-s3
-dist/*
-!dist/kinvey-nativescript-sdk.js
-!dist/kinvey-nativescript-sdk.min.js
+*.js
 
 # Test Files
 coverage
 report.xml
 *.tap
-test/e2e/app
 
 # MacOS Files
 .DS_Store
