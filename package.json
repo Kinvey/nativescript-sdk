@@ -29,6 +29,7 @@
     "test:watch": "mocha -w --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/index test/unit"
   },
   "dependencies": {
+    "events": "1.1.1",
     "kinvey-js-sdk": "file:///Users/Thomas/Documents/Kinvey/Development/SDKs/JavaScript/Core/SDK"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "2.2.0",
     "nativescript-dev-typescript": "0.4.5",
     "tns-core-modules": "3.0.1",
+    "tns-platform-declarations": "3.0.1",
     "typescript": "2.3.3"
   },
   "nativescript": {
