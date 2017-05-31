@@ -27,6 +27,7 @@
     "kinvey-js-sdk": "file:///Users/Thomas/Documents/Kinvey/Development/SDKs/JavaScript/Core/SDK"
   },
   "devDependencies": {
+    "@types/node": "7.0.22",
     "nativescript-dev-typescript": "0.4.5",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
