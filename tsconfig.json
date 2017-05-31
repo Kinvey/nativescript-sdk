@@ -22,9 +22,6 @@
     "target": "es5"
   },
   "compileOnSave": false,
-  "files": [
-    "index.ts"
-  ],
   "include": [
     "src/**/*"
   ],
