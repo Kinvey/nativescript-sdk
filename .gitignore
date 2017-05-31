@@ -6,12 +6,5 @@ npm-debug.log
 # Src files
 *.js
 
-# Test Files
-coverage
-report.xml
-*.tap
-
 # MacOS Files
 .DS_Store
-shots
-local.log
