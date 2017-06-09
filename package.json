@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "events": "1.1.1",
-    "kinvey-js-sdk": "file:///Users/Thomas/Documents/Kinvey/Development/SDKs/JavaScript/Core/SDK"
+    "kinvey-js-sdk": "3.5.0"
   },
   "devDependencies": {
     "@types/node": "7.0.22",
