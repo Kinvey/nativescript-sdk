@@ -1,20 +1,20 @@
-import Promise from 'es6-promise';
-import { isDefined, NotFoundError } from 'kinvey-js-sdk/dist/export';
-import NativeScriptSQLite from 'nativescript-sqlite'; // eslint-disable-line import/no-unresolved, import/extensions, import/no-extraneous-dependencies
-import isString from 'lodash/isString';
-import isArray from 'lodash/isArray';
+import { isDefined } from 'kinvey-js-sdk/dist/utils';
+import { NotFoundError } from 'kinvey-js-sdk/dist/errors';
+const NativeScriptSQLite = require('nativescript-sqlite');
 
 const masterCollectionName = 'sqlite_master';
 let isSupported;
 
-class SQLite {
+class SQLiteAdapter {
+  name: string;
+
   constructor(name = 'kinvey') {
     if (isDefined(name) === false) {
-      throw new Error('A name is required to use the SQLite adapter.', name);
+      throw new Error('A name is required to use the SQLite adapter.');
     }
 
-    if (isString(name) === false) {
-      throw new Error('The name must be a string to use the SQLite adapter', name);
+    if (typeof name !== 'string') {
+      throw new Error('The name must be a string to use the SQLite adapter');
     }
 
     this.name = name;
@@ -23,7 +23,7 @@ class SQLite {
   openTransaction(collection, query, parameters, write = false) {
     const escapedCollection = `"${collection}"`;
     const isMaster = collection === masterCollectionName;
-    const isMulti = isArray(query);
+    const isMulti = Array.isArray(query);
     query = isMulti ? query : [[query, parameters]];
 
     return new NativeScriptSQLite(this.name)
@@ -58,7 +58,7 @@ class SQLite {
               return db.execSQL(sql, parts[1]);
             })
             .then((resultSet = []) => {
-              if (write === false && isArray(resultSet) && resultSet.length > 0) {
+              if (write === false && Array.isArray(resultSet) && resultSet.length > 0) {
                 for (let i = 0, len = resultSet.length; i < len; i += 1) {
                   try {
                     const row = resultSet[i];
@@ -105,7 +105,7 @@ class SQLite {
     const queries = [];
     let singular = false;
 
-    if (!isArray(entities)) {
+    if (Array.isArray(entities) === false) {
       singular = true;
       entities = [entities];
     }
@@ -173,9 +173,9 @@ class SQLite {
   }
 }
 
-export default {
+export const SQLite = {
   load(name) {
-    const db = new SQLite(name);
+    const db = new SQLiteAdapter(name);
 
     if (isDefined(NativeScriptSQLite) === false) {
       return Promise.resolve(undefined);

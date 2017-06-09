@@ -16,28 +16,22 @@ npm-debug.log
 .istanbul.yml
 .travis.yml
 .github
-scripts/*
-src/*
-!src/kinvey.d.ts
+*.ts
+*.js.map
+hooks/
+scripts/
 esdoc.json
 README.md
 CONTRIBUTING.md
 CHANGELOG.md
 webpack.config.js
-
-# Build Files
-.env
-.tmp
-tmp
-s3/*
-dist/*
-!dist/kinvey-nativescript-sdk.js
+tsconfig.json
 
 # Test Files
-coverage/*
+coverage/
 report.xml
 *.tap
-test/*
+test/
 
 # MacOS Files
 .DS_Store
