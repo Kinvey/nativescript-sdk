@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "install": "npm run build",
     "preversion": "rm -rf node_modules && npm install && npm test",
     "postversion": "git push && git push --tags"
   },
