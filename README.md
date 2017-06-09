@@ -2,6 +2,8 @@
 
 [Kinvey](http://www.kinvey.com) (pronounced Kin-vey, like convey) makes it ridiculously easy for developers to setup, use and operate a cloud backend for their mobile apps. They don't have to worry about connecting to various cloud services, setting up servers for their backend, or maintaining and scaling them.
 
+This SDK makes it easy to connect your [Nativescript](https://www.nativescript.org/) apps with Kinvey.
+
 ## Installation
 
 #### Using npm
@@ -35,7 +37,16 @@ You will then be able to access Kinvey NativeScript SDK via `window.Kinvey`.
 
 ## Documentation
 
-For more detailed documentation, see http://devcenter.kinvey.com/html5
+We're working on adding Nativescript docs to our [Devcenter](http://devcenter.kinvey.com)! For documentation on our core Javascript APIs, see http://devcenter.kinvey.com/html5
+
+## Known Limitations
+
+Currently, this SDK supports basic Kinvey auth and data functions, as well as offline behaviors and data synchronization. We're still working on supporting the following features -
+
+* We currently only support Kinvey auth. Support for [Mobile Identity Connect](http://devcenter.kinvey.com/guides/mobile-identity-connect) is coming soon!
+* Push notifications.
+* Encryption on the local storage.
+* Nativescript docs.
 
 ## License
 See [LICENSE](LICENSE) for details.
