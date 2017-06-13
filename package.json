@@ -30,7 +30,6 @@
     "nativescript-sqlite": "1.1.7"
   },
   "devDependencies": {
-    "@types/node": "7.0.22",
     "nativescript-dev-typescript": "0.4.5",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
