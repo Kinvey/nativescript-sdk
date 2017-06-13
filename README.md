@@ -4,7 +4,7 @@
 
 This SDK makes it easy to connect your [Nativescript](https://www.nativescript.org/) apps with Kinvey.
 
-## How to use this SDK
+## Installation
 
 #### Using npm
 Install and save the Kinvey NativeScript SDK:
