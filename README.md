@@ -4,7 +4,7 @@
 
 This SDK makes it easy to connect your [Nativescript](https://www.nativescript.org/) apps with Kinvey.
 
-## Installation
+## How to use this SDK
 
 #### Using npm
 Install and save the Kinvey NativeScript SDK:
@@ -43,8 +43,6 @@ We're working on adding Nativescript docs to our [Devcenter](http://devcenter.ki
 
 Currently, this SDK supports basic Kinvey auth and data functions, as well as offline behaviors and data synchronization. We're still working on supporting the following features -
 
-* We currently only support Kinvey auth. Support for [Mobile Identity Connect](http://devcenter.kinvey.com/guides/mobile-identity-connect) is coming soon!
-* Push notifications.
 * Encryption on the local storage.
 * Nativescript docs.
 
