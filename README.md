@@ -4,10 +4,15 @@
 
 This SDK makes it easy to connect your [Nativescript](https://www.nativescript.org/) apps with Kinvey.
 
-## Installation
+## How to use
 
-#### Using npm
-Install and save the Kinvey NativeScript SDK:
+#### Install the NativeScript plugin
+
+```
+tns install kinvey-nativescript
+```
+
+#### Install via npm
 
 ```javascript
 npm install --save kinvey-nativescript-sdk
@@ -21,30 +26,9 @@ import Kinvey from 'kinvey-nativescript-sdk';
 
 A [TypeScript](https://www.typescriptlang.org/) type definition file is included in the distribution and will automatically be picked up by the TypeScript compiler.
 
-#### Using the Kinvey CDN
-
-```html
-<script src="https://download.kinvey.com/js/kinvey-nativescript-sdk-3.5.0.min.js"></script>
-```
-
-A [TypeScript](https://www.typescriptlang.org/) type definition file is available at
-
-```html
-https://download.kinvey.com/js/kinvey-nativescript-sdk-3.5.0.d.ts
-```
-
-You will then be able to access Kinvey NativeScript SDK via `window.Kinvey`.
-
 ## Documentation
 
-We're working on adding Nativescript docs to our [Devcenter](http://devcenter.kinvey.com)! For documentation on our core Javascript APIs, see http://devcenter.kinvey.com/html5
-
-## Known Limitations
-
-Currently, this SDK supports basic Kinvey auth and data functions, as well as offline behaviors and data synchronization. We're still working on supporting the following features -
-
-* Encryption on the local storage.
-* Nativescript docs.
+For detailed documentation on using the SDK, see http://devcenter.kinvey.com/nativescript
 
 ## License
 See [LICENSE](LICENSE) for details.
