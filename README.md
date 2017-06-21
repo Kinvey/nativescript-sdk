@@ -9,7 +9,7 @@ This SDK makes it easy to connect your [Nativescript](https://www.nativescript.o
 #### Install the NativeScript plugin
 
 ```
-tns install kinvey-nativescript
+tns plugin add kinvey-nativescript-sdk
 ```
 
 #### Install via npm
@@ -21,7 +21,7 @@ npm install --save kinvey-nativescript-sdk
 Import the Kinvey NativeScript SDK (ES6/TypeScript):
 
 ```javascript
-import Kinvey from 'kinvey-nativescript-sdk';
+import { Kinvey } from 'kinvey-nativescript-sdk';
 ```
 
 A [TypeScript](https://www.typescriptlang.org/) type definition file is included in the distribution and will automatically be picked up by the TypeScript compiler.
