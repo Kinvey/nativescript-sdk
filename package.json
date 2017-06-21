@@ -1,6 +1,6 @@
 {
   "name": "kinvey-nativescript-sdk",
-  "version": "3.6.0-ns.4",
+  "version": "3.6.0-ns.5",
   "description": "Kinvey JavaScript SDK for NativeScript applications.",
   "homepage": "http://www.kinvey.com",
   "bugs": {
@@ -34,7 +34,7 @@
     "tns-platform-declarations": "3.0.1",
     "typescript": "2.3.3"
   },
-  "typings":"./src/kinvey.d.ts",
+  "typings": "./src/kinvey.d.ts",
   "nativescript": {
     "platforms": {
       "ios": "3.0.0",
