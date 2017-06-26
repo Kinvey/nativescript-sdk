@@ -5,19 +5,28 @@ npm-debug.log
 
 # Src files
 .editorconfig
+.gitattributes
 .gitignore
 .nvmrc
+.codeclimate.yml
+.codecov.yml
+.istanbul.yml
+.travis.yml
 .github
 *.ts
 !*.d.ts
 *.js.map
 hooks/
+scripts/
 README.md
 CONTRIBUTING.md
 CHANGELOG.md
 tsconfig.json
 
 # Test Files
+coverage/
+report.xml
+*.tap
 test/
 
 # MacOS Files
