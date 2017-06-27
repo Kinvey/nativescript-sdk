@@ -4,15 +4,12 @@ node_modules
 npm-debug.log
 
 # Src files
-.babelrc
 .editorconfig
-.eslintrc
 .gitattributes
 .gitignore
 .nvmrc
 .codeclimate.yml
 .codecov.yml
-.eslintignore
 .istanbul.yml
 .travis.yml
 .github
@@ -21,11 +18,9 @@ npm-debug.log
 *.js.map
 hooks/
 scripts/
-esdoc.json
 README.md
 CONTRIBUTING.md
 CHANGELOG.md
-webpack.config.js
 tsconfig.json
 
 # Test Files
