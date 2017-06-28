@@ -6,8 +6,9 @@ import { KinveyError, NotFoundError } from 'kinvey-js-sdk/dist/errors';
 import { isDefined } from 'kinvey-js-sdk/dist/utils';
 import { User } from 'kinvey-js-sdk/dist/entity';
 import { AuthType, CacheRequest, KinveyRequest, RequestMethod } from 'kinvey-js-sdk/dist/request';
+import { PushConfig } from './';
 
-export class Push extends EventEmitter {
+export class PushCommon extends EventEmitter {
   private _client: Client;
 
   get client() {
@@ -26,15 +27,15 @@ export class Push extends EventEmitter {
     this._client = client;
   }
 
-  onNotification(listener) {
+  onNotification(listener: (data: any) => void) {
     return (this as any).on('notification', listener);
   }
 
-  onceNotification(listener) {
+  onceNotification(listener: (data: any) => void) {
     return (this as any).once('notification', listener);
   }
 
-  register(options = <any>{}) {
+  register(options = <PushConfig>{}) {
     return this._registerWithPushPlugin(options)
       .then((token) => {
         if (isDefined(token) === false) {
@@ -48,7 +49,7 @@ export class Push extends EventEmitter {
       });
   }
 
-  unregister(options = <any>{}) {
+  unregister(options = <PushConfig>{}) {
     return this._unregisterWithPushPlugin(options)
       .then(() => {
         return this._getTokenFromCache(options);
@@ -65,20 +66,20 @@ export class Push extends EventEmitter {
       });
   }
 
-  protected _registerWithPushPlugin(options = <any>{}): Promise<string> {
+  protected _registerWithPushPlugin(options = <PushConfig>{}): Promise<string> {
     return Promise.reject(new KinveyError('Unable to register for push notifications.'));
   }
 
-  protected _unregisterWithPushPlugin(options = <any>{}): Promise<null> {
+  protected _unregisterWithPushPlugin(options = <PushConfig>{}): Promise<null> {
     return Promise.reject(new KinveyError('Unable to unregister for push notifications.'));
   }
 
-  private _registerWithKinvey(token: string, options = <any>{}): Promise<string> {
+  private _registerWithKinvey(token: string, options = <PushConfig>{}): Promise<string> {
     const activeUser = User.getActiveUser(this.client);
 
-    if (isDefined(activeUser) === false && isDefined(options.userId) === false) {
+    if (isDefined(activeUser) === false) {
       return Promise.reject(new KinveyError('Unable to register this device for push notifications.',
-        'You must login a user or provide a userId.'));
+        'You must login a user.'));
     }
 
     const request = new KinveyRequest({
@@ -88,22 +89,20 @@ export class Push extends EventEmitter {
       data: {
         platform: Device.os.toLowerCase(),
         framework: 'nativescript',
-        deviceId: token,
-        userId: isDefined(activeUser) ? undefined : options.userId
+        deviceId: token
       },
-      properties: options.properties,
       timeout: options.timeout,
       client: this.client
     });
     return request.execute().then(() => token);
   }
 
-  private _unregisterWithKinvey(token: string, options = <any>{}): Promise<string> {
+  private _unregisterWithKinvey(token: string, options = <PushConfig>{}): Promise<string> {
     const activeUser = User.getActiveUser(this.client);
 
-    if (isDefined(activeUser) === false && isDefined(options.userId) === false) {
+    if (isDefined(activeUser) === false) {
       return Promise.reject(new KinveyError('Unable to unregister this device for push notifications.',
-        'You must login a user or provide a userId.'));
+        'You must login a user.'));
     }
 
     const request = new KinveyRequest({
@@ -113,32 +112,25 @@ export class Push extends EventEmitter {
       data: {
         platform: Device.os.toLowerCase(),
         framework: 'nativescript',
-        deviceId: token,
-        userId: isDefined(activeUser) ? undefined : options.userId
+        deviceId: token
       },
-      properties: options.properties,
       timeout: options.timeout,
       client: this.client
     });
     return request.execute().then(response => response.data);
   }
 
-  private _getTokenFromCache(options = <any>{}): Promise<string|null> {
+  private _getTokenFromCache(options = <PushConfig>{}): Promise<string|null> {
     const activeUser = User.getActiveUser(this.client);
-    let userId = options.userId;
 
-    if (isDefined(activeUser) === false && isDefined(options.userId) === false) {
+    if (isDefined(activeUser) === false) {
       throw new KinveyError('Unable to retrieve device token.',
-        'You must login a user or provide a userId.');
-    }
-
-    if (isDefined(activeUser) && isDefined(userId) === false) {
-      userId = activeUser._id;
+        'You must login a user.');
     }
 
     const request = new CacheRequest({
       method: RequestMethod.GET,
-      url: `${this.client.apiHostname}/appdata/${this.client.appKey}/__device/${userId}`,
+      url: `${this.client.apiHostname}/appdata/${this.client.appKey}/__device/${activeUser._id}`,
       client: this.client
     });
     return request.execute()
@@ -159,19 +151,19 @@ export class Push extends EventEmitter {
       })
   }
 
-  private _saveTokenToCache(token: any, options = <any>{}): Promise<string> {
+  private _saveTokenToCache(token: any, options = <PushConfig>{}): Promise<string> {
     const activeUser = User.getActiveUser(this.client);
-    let userId = options.userId;
 
-    if (isDefined(activeUser) && isDefined(userId) === false) {
-      userId = activeUser._id;
+    if (isDefined(activeUser) === false) {
+      throw new KinveyError('Unable to save device token.',
+        'You must login a user.');
     }
 
     const request = new CacheRequest({
       method: RequestMethod.PUT,
       url: `${this.client.apiHostname}/appdata/${this.client.appKey}/__device`,
       data: {
-        userId: userId,
+        userId: activeUser._id,
         token: token
       },
       client: this.client
@@ -179,17 +171,17 @@ export class Push extends EventEmitter {
     return request.execute().then(() => token);
   }
 
-  private _deleteTokenFromCache(options = <any>{}): Promise<null> {
+  private _deleteTokenFromCache(options = <PushConfig>{}): Promise<null> {
     const activeUser = User.getActiveUser(this.client);
-    let userId = options.userId;
 
-    if (isDefined(activeUser) && isDefined(userId) === false) {
-      userId = activeUser._id;
+    if (isDefined(activeUser) === false) {
+      throw new KinveyError('Unable to delete device token.',
+        'You must login a user.');
     }
 
     const request = new CacheRequest({
       method: RequestMethod.DELETE,
-      url: `${this.client.apiHostname}/appdata/${this.client.appKey}/__device/${userId}`,
+      url: `${this.client.apiHostname}/appdata/${this.client.appKey}/__device/${activeUser._id}`,
       client: this.client
     });
     return request.execute()

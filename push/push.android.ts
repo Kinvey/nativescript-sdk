@@ -1,7 +1,8 @@
 import { Promise } from 'es6-promise';
 import { isDefined } from 'kinvey-js-sdk/dist/utils';
 import { KinveyError } from 'kinvey-js-sdk/dist/errors';
-import { Push as PushCommon } from './push.common';
+import { PushCommon } from './common';
+import { PushConfig, AndroidPushConfig } from './';
 let PushPlugin;
 
 try {
@@ -10,9 +11,9 @@ try {
   // Just catch the error
 }
 
-export class Push extends PushCommon {
-  protected _registerWithPushPlugin(options = <any>{}): Promise<string> {
-    const config = options.android || {};
+class AndroidPush extends PushCommon {
+  protected _registerWithPushPlugin(options = <PushConfig>{}): Promise<string> {
+    const config = options.android || <AndroidPushConfig>{};
 
     return new Promise((resolve, reject) => {
       if (isDefined(PushPlugin) === false) {
@@ -28,7 +29,7 @@ export class Push extends PushCommon {
     });
   }
 
-  protected _unregisterWithPushPlugin(options = <any>{}): Promise<null> {
+  protected _unregisterWithPushPlugin(options = <PushConfig>{}): Promise<null> {
     return new Promise((resolve, reject) => {
       if (isDefined(PushPlugin) === false) {
         return reject(new KinveyError('NativeScript Push Plugin is not installed.',
@@ -40,3 +41,6 @@ export class Push extends PushCommon {
     });
   }
 }
+
+const Push = new AndroidPush();
+export { Push };
