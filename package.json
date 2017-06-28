@@ -18,8 +18,8 @@
     "url": "git@github.com:Kinvey/nativescript-sdk"
   },
   "scripts": {
-    "build": "del 'src/**/*.js' && tsc",
-    "preversion": "rm -rf node_modules && npm install && npm test",
+    "build": "del 'src/**/*.js' && del 'push/**/*.js' && tsc",
+    "preversion": "rm -rf node_modules && npm install",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
