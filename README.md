@@ -26,9 +26,34 @@ import { Kinvey } from 'kinvey-nativescript-sdk';
 
 A [TypeScript](https://www.typescriptlang.org/) type definition file is included in the distribution and will automatically be picked up by the TypeScript compiler.
 
+
+#### Build from Source
+
+The `master` branch represents the latest stable code in the SDK. To build the SDK, use the following - 
+
+```
+npm run build
+```
+
+To test - 
+
+```
+npm run test
+```
+
+_Note: Before running any tests you will need to run `npm install` to install any dependencies required._
+
+
+All Kinvey JS SDKs are organized as a common core and platform specific shims. To build the entire SDK source - 
+- Clone and build the [core js-sdk](https://github.com/Kinvey/js-sdk). The NativeScript shim currently requires that you use the `nativescript` branch of the core.
+- Edit the `package.json` of this shim to point to your local copy of the core.
+- Build the shim.
+
+
 ## Documentation
 
 For detailed documentation on using the SDK, see http://devcenter.kinvey.com/nativescript
+
 
 ## License
 See [LICENSE](LICENSE) for details.
