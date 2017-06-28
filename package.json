@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "del 'src/**/*.js' && del 'push/**/*.js' && tsc",
-    "preversion": "rm -rf node_modules && npm install",
+    "preversion": "rm -rf node_modules && npm install && npm run build",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
