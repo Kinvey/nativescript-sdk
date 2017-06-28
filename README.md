@@ -45,9 +45,9 @@ _Note: Before running any tests you will need to run `npm install` to install an
 
 
 All Kinvey JS SDKs are organized as a common core and platform specific shims. To build the entire SDK source - 
-- Clone and build the [core js-sdk](https://github.com/Kinvey/js-sdk). The NativeScript shim currently requires that you use the `nativescript` branch of the core.
-- Edit the `package.json` of this shim to point to your local copy of the core.
-- Build the shim.
+- Clone and build the [core kinvey-js-sdk](https://github.com/Kinvey/js-sdk). The NativeScript shim currently requires that you use the `nativescript` branch of the core.
+- Edit the `package.json` of this [repo](https://github.com/Kinvey/nativescript-sdk/blob/master/package.json) to point to your local copy of the `kinvey-js-sdk`.
+- Build this repo.
 
 
 ## Documentation
