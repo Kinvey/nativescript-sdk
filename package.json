@@ -18,7 +18,7 @@
     "url": "git@github.com:Kinvey/nativescript-sdk"
   },
   "scripts": {
-    "build": "del 'src/**/*.js' && del 'push/**/*.js' && tsc",
+    "build": "rm -rf 'src/**/*.js' && rm -rf 'push/**/*.js' && tsc",
     "preversion": "rm -rf node_modules && npm install && npm run build",
     "postversion": "git push && git push --tags"
   },
@@ -29,7 +29,6 @@
     "nativescript-sqlite": "1.1.7"
   },
   "devDependencies": {
-    "del-cli": "1.1.0",
     "nativescript-dev-typescript": "0.4.5",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
