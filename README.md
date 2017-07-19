@@ -17,7 +17,7 @@ tns plugin add kinvey-nativescript-sdk
 ```javascript
 npm install --save kinvey-nativescript-sdk
 ```
-*Note: It is recommended to use **npm version 4.x.x**. Or check the latest supported npm version.*
+*Note: It is recommended to use **npm version 4.x.x**. Or check the latest npm version NativeScript supports.*
 
 #### Import the Kinvey NativeScript SDK (ES6/TypeScript):
 
