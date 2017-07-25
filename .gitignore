@@ -9,3 +9,8 @@ package-lock.json
 
 # MacOS Files
 .DS_Store
+
+# Demo generated files
+demo/platforms
+demo/node_modules
+demo/hooks
