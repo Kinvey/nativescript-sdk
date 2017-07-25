@@ -7,6 +7,9 @@
     "id": "test.test.test",
     "tns-android": {
       "version": "3.1.1"
+    },
+    "tns-ios": {
+      "version": "3.1.0"
     }
   },
   "dependencies": {
@@ -18,7 +21,7 @@
     "@angular/http": "~4.1.0",
     "@angular/platform-browser": "~4.1.0",
     "@angular/router": "~4.1.0",
-    "kinvey-nativescript-sdk": "../",
+    "kinvey-nativescript-sdk": "file:../",
     "nativescript-angular": "~3.0.0",
     "nativescript-background-http": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",

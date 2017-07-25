@@ -27,8 +27,8 @@ export class AppComponent {
 
   constructor() {
     Kinvey.init({
-      appKey: 'kid_SJsSMfnGZ',
-      appSecret: '6e706d15ab1747e8a50ce1289ec7d257'
+      appKey: 'kid_HkTD2CJc',
+      appSecret: 'cd7f658ed0a548dd8dfadf5a1787568b'
     });
   }
 
@@ -37,14 +37,14 @@ export class AppComponent {
     const activeUser = Kinvey.User.getActiveUser();
     let prm: Promise<any> = Promise.resolve();
     if (!activeUser) {
-      prm = Kinvey.User.login('username', 'qweqwe');
+      prm = Kinvey.User.login('admin', 'admin');
     }
 
     let fileContent, filePath;
 
     prm
       .then(res => {
-        collection = Kinvey.DataStore.collection('Events', Kinvey.DataStoreType.Cache);
+        collection = Kinvey.DataStore.collection('Books', Kinvey.DataStoreType.Cache);
       })
       .then(() => {
         return Kinvey.Files.find();
@@ -64,19 +64,33 @@ export class AppComponent {
         log('was saved: ', wasSaved);
         // const file = fs.knownFolders.temp().getFile('testfile.png');
         // filePath = file.path;
-        const file = fs.File.fromPath('/data/data/test.test.test/files/app/images/bigimg.jpgz');
+        // const file = fs.File.fromPath('/data/data/test.test.test/files/app/images/bigimg.jpgz');
+        // return file;
+        const filePath = fs.path.join(fs.knownFolders.currentApp().path, './images/bigimg.jpg');
+        console.log('exists: ' + fs.File.exists(filePath));
+        const file = fs.File.fromPath(filePath);
         return file;
       })
       .then((file) => {
         log('uploading');
-        fileContent = file;
+        // fileContent = file;
+
+        // const metadata = {
+        //   filename: 'testfile.png',
+        //   mimeType: 'image/png',
+        //   size: 23413956
+        // };
+        // return Kinvey.Files.upload('/data/data/test.test.test/files/app/images/bigimg.jpg', metadata);
+
+        fileContent = file.readSync();
+        console.log('size: ' + fileContent.length);
 
         const metadata = {
-          filename: 'testfile.png',
-          mimeType: 'image/png',
-          size: 23413956
+          filename: 'testfile.jpg',
+          mimeType: 'image/jpg',
+          size: fileContent.length
         };
-        return Kinvey.Files.upload('/data/data/test.test.test/files/app/images/bigimg.jpg', metadata);
+        return Kinvey.Files.upload(file, metadata);
       })
       .then((resp: any) => {
         const md = resp.data;
