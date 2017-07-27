@@ -23,7 +23,6 @@
     "@angular/router": "~4.1.0",
     "kinvey-nativescript-sdk": "file:../",
     "nativescript-angular": "~3.0.0",
-    "nativescript-background-http": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.3.0",

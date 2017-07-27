@@ -18,7 +18,10 @@ const log = (msg, obj?) => {
   selector: "my-app",
   template: `
     <ActionBar title="My App"></ActionBar>
-    <Label text="Run" (tap)="run()"></Label>
+    <StackLayout>
+      <ActivityIndicator [busy]="true" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+      <Label text="Run" (tap)="run()"></Label>
+    </StackLayout>
     <!-- Your UI components go here -->
   `
 })
@@ -49,7 +52,7 @@ export class AppComponent {
         });
         return Promise.all(prms);
       })
-      .then((wasSaved) => {
+      .then(() => {
         const filePath = fs.path.join(fs.knownFolders.currentApp().path, './images/bigimg.jpg');
         log('exists: ' + fs.File.exists(filePath));
         const file = fs.File.fromPath(filePath);
