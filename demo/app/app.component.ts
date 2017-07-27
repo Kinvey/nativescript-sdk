@@ -63,11 +63,11 @@ export class AppComponent {
         const fileContent = file.readSync();
 
         const metadata = {
-          filename: 'testfile.jpg',
+          filename: file.name,
           mimeType: 'image/jpg',
           size: fileContent.length
         };
-        return Kinvey.Files.upload(file, metadata);
+        return Kinvey.Files.upload(file, metadata, { timeout: 2147483647 });
       })
       .then((resp: any) => {
         log('uploaded');
