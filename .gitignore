@@ -2,9 +2,15 @@
 .npm_cache
 node_modules
 npm-debug.log
+package-lock.json
 
 # Src files
 *.js
 
 # MacOS Files
 .DS_Store
+
+# Demo generated files
+demo/platforms
+demo/node_modules
+demo/hooks

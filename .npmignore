@@ -31,3 +31,6 @@ test/
 
 # MacOS Files
 .DS_Store
+
+# Demo files
+demo/
