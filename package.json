@@ -1,6 +1,6 @@
 {
   "name": "kinvey-nativescript-sdk",
-  "version": "3.7.1",
+  "version": "3.7.2",
   "description": "Kinvey JavaScript SDK for NativeScript applications.",
   "homepage": "http://www.kinvey.com",
   "bugs": {
