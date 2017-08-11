@@ -26,9 +26,12 @@
     "es6-promise": "4.1.0",
     "events": "1.1.1",
     "kinvey-js-sdk": "3.6.0-ns.9",
-    "nativescript-sqlite": "1.1.7"
+    "nativescript-sqlite": "1.1.7",
+    "universal-runner": "file:../../../stuff/universal-runner"
   },
   "devDependencies": {
+    "fs-extra": "^4.0.1",
+    "klaw-sync": "^3.0.0",
     "nativescript-dev-typescript": "0.4.5",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
