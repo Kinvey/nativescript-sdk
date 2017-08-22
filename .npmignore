@@ -14,7 +14,8 @@ npm-debug.log
 .travis.yml
 .github
 *.ts
-!*.d.ts
+*.d.ts
+!kinvey.d.ts
 *.js.map
 hooks/
 scripts/
