@@ -36,5 +36,9 @@
     "lazy": "1.0.11",
     "nativescript-dev-typescript": "~0.4.0",
     "typescript": "~2.2.1"
+  },
+  "scripts": {
+    "build.plugin": "cd ../src && npm run build",
+    "ci.android.build": "npm run build.plugin && tns build android"
   }
 }

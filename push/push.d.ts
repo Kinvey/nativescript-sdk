@@ -12,7 +12,7 @@ export interface IOSPushConfig {
 
 export interface PushConfig {
   android?: AndroidPushConfig;
-  ios?: iOSPushConfig;
+  ios?: IOSPushConfig;
   timeout?: number;
 }
 
