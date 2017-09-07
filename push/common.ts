@@ -148,7 +148,7 @@ export class PushCommon extends EventEmitter {
         }
 
         return null;
-      })
+      });
   }
 
   private _saveTokenToCache(token: any, options = <PushConfig>{}): Promise<string> {

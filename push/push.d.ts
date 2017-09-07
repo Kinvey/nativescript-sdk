@@ -2,7 +2,7 @@ export interface AndroidPushConfig {
   senderID: string;
 }
 
-export interface iOSPushConfig {
+export interface IOSPushConfig {
   alert: boolean;
   badge: boolean;
   sound: boolean;
@@ -13,7 +13,7 @@ export interface iOSPushConfig {
 export interface PushConfig {
   android?: AndroidPushConfig;
   ios?: iOSPushConfig;
-  timeout?: number
+  timeout?: number;
 }
 
 export namespace Push {

@@ -11,7 +11,7 @@ try {
   // Just catch the error
 }
 
-class iOSPush extends PushCommon {
+class IOSPush extends PushCommon {
   protected _registerWithPushPlugin(options = <PushConfig>{}): Promise<string> {
     const config = options.ios || <iOSPushConfig>{};
 

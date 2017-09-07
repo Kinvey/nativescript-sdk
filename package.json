@@ -8,7 +8,9 @@
     },
     "license": "Apache-2.0",
     "author": "Kinvey",
-    "contributors": ["Thomas Conner <thomas@kinvey.com>"],
+    "contributors": [
+        "Thomas Conner <thomas@kinvey.com>"
+    ],
     "main": "./src/index.js",
     "typings": "./src/kinvey.d.ts",
     "repository": {
@@ -29,7 +31,6 @@
     },
     "devDependencies": {
         "nativescript-dev-typescript": "0.4.5",
-        "nativescript-dev-webpack": "0.7.3",
         "tns-core-modules": "3.0.1",
         "tns-platform-declarations": "3.0.1",
         "tslint": "^5.4.3",
@@ -41,5 +42,9 @@
             "android": "3.0.0"
         }
     },
-    "keywords": ["Kinvey", "JavaScript", "NativeScript"]
+    "keywords": [
+        "Kinvey",
+        "JavaScript",
+        "NativeScript"
+    ]
 }
