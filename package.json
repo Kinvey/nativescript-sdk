@@ -18,7 +18,7 @@
         "url": "git@github.com:Kinvey/nativescript-sdk"
     },
     "scripts": {
-        "build": "rm -rf src/**/*.js && rm -rf push/**/*.js && tsc",
+        "build": "rm -rf src/**/*.js && rm -rf push/**/*.js && npm i && tsc",
         "ci.tslint": "npm i && tslint **/*.ts --config ./tslint.json --exclude **/node_modules/**",
         "preversion": "rm -rf node_modules && npm install && npm run build",
         "postversion": "git push && git push --tags"
