@@ -3,6 +3,7 @@ import { isDefined } from 'kinvey-js-sdk/dist/utils';
 import { KinveyError } from 'kinvey-js-sdk/dist/errors';
 import { PushCommon } from './common';
 import { PushConfig, AndroidPushConfig } from './';
+// tslint:disable-next-line:variable-name
 let PushPlugin;
 
 try {
@@ -42,5 +43,6 @@ class AndroidPush extends PushCommon {
   }
 }
 
+// tslint:disable-next-line:variable-name
 const Push = new AndroidPush();
 export { Push };
