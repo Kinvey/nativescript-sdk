@@ -19,7 +19,8 @@
     },
     "scripts": {
         "build": "rm -rf src/**/*.js && rm -rf push/**/*.js && npm i && tsc",
-        "ci.tslint": "npm i && tslint **/*.ts --config ./tslint.json --exclude **/node_modules/**",
+        "ci.tslint": "npm i && tslint **/*.ts",
+        "lint": "tslint **/*.ts",
         "preversion": "rm -rf node_modules && npm install && npm run build",
         "postversion": "git push && git push --tags"
     },
@@ -34,6 +35,7 @@
         "tns-core-modules": "3.0.1",
         "tns-platform-declarations": "3.0.1",
         "tslint": "^5.4.3",
+        "tslint-config-airbnb": "5.3.0",
         "typescript": "2.3.4"
     },
     "nativescript": {

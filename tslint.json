@@ -1,35 +1,18 @@
 {
-    "rules": {
-        "class-name": true,
-        "comment-format": [true, "check-space"],
-        "indent": [true, "spaces"],
-        "no-duplicate-variable": true,
-        "no-eval": true,
-        "no-internal-module": true,
-        "no-trailing-whitespace": true,
-        "no-var-keyword": true,
-        "one-line": [true, "check-open-brace", "check-whitespace"],
-        "quotemark": [false, "double"],
-        "semicolon": [true, "always"],
-        "triple-equals": [true, "allow-null-check"],
-        "typedef-whitespace": [
-            true,
-            {
-                "call-signature": "nospace",
-                "index-signature": "nospace",
-                "parameter": "nospace",
-                "property-declaration": "nospace",
-                "variable-declaration": "nospace"
-            }
-        ],
-        "variable-name": [true, "ban-keywords"],
-        "whitespace": [
-            true,
-            "check-branch",
-            "check-decl",
-            "check-operator",
-            "check-separator",
-            "check-type"
-        ]
-    }
+  "exclude": "node_modules/**/*.ts",
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "align": false,
+    "function-name": [true, {
+      "private-method-regex": "^[a-z_][\\w\\d]+$",
+      "protected-method-regex": "^[a-z_][\\w\\d]+$",
+      "static-method-regex": "^[a-z][\\w\\d]+$"
+    }],
+    "import-name": false,
+    "max-line-length": [false, 120],
+    "no-param-reassign": false,
+    "object-literal-shorthand": false,
+    "trailing-comma": [true, "never"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
+  }
 }
