@@ -1,5 +1,4 @@
 {
-  "exclude": "node_modules/**/*.ts",
   "extends": "tslint-config-airbnb",
   "rules": {
     "align": false,
@@ -14,6 +13,7 @@
     "object-literal-shorthand": false,
     "semicolon": [true, "always"],
     "trailing-comma": [true, "never"],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+    "indent": [true, "spaces", 2]
   }
 }
