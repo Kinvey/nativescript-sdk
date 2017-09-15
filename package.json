@@ -18,7 +18,9 @@
     "url": "git@github.com:Kinvey/nativescript-sdk"
   },
   "scripts": {
-    "build": "rm -rf 'src/**/*.js' && rm -rf 'push/**/*.js' && tsc",
+    "build": "rm -rf src/**/*.js && rm -rf push/**/*.js && npm i && tsc",
+    "ci.tslint": "npm i && npm run lint",
+    "lint": "tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts",
     "preversion": "rm -rf node_modules && npm install && npm run build",
     "postversion": "git push && git push --tags"
   },
@@ -32,6 +34,8 @@
     "nativescript-dev-typescript": "0.4.5",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
+    "tslint": "5.7.0",
+    "tslint-config-airbnb": "5.3.0",
     "typescript": "2.3.4"
   },
   "nativescript": {

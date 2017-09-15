@@ -16,7 +16,7 @@ export interface FileUploadRequestOptions {
   start: number;
   timeout: number;
   maxBackoff: number;
-  headers: { [key: string]: string }
+  headers: { [key: string]: string };
 }
 
 export interface KinveyResponseConfig {
@@ -53,10 +53,10 @@ export class CommonFileStore extends CoreFileStore {
 }
 
 export interface FileUploadWorkerOptions {
-  url: string,
-  metadata: FileMetadata,
-  options: FileUploadRequestOptions,
-  filePath: string,
+  url: string;
+  metadata: FileMetadata;
+  options: FileUploadRequestOptions;
+  filePath: string;
 }
 
 export class FileUploadWorker extends KinveyWorker {
