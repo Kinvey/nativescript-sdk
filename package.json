@@ -27,7 +27,7 @@
   "dependencies": {
     "es6-promise": "4.1.0",
     "events": "1.1.1",
-    "kinvey-js-sdk": "3.8.0",
+    "kinvey-js-sdk": "3.8.1",
     "nativescript-sqlite": "1.1.7"
   },
   "devDependencies": {
