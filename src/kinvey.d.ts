@@ -318,7 +318,7 @@ export namespace Kinvey {
     logout(options?: RequestOptions): Promise<void>;
     static logout(options?: RequestOptions): Promise<void>;
     signup(data: {}, options?: RequestOptions): Promise<this>;
-    static signup(data: {}, options?: RequestOptions): Promise<User>;
+    static signup(data?: {}, options?: RequestOptions): Promise<User>;
     update(data: {}, options?: RequestOptions): Promise<this>;
     static update(data: {}, options?: RequestOptions): Promise<User>;
     me(options?: RequestOptions): Promise<this>;
