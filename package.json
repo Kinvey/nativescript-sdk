@@ -1,6 +1,6 @@
 {
   "name": "kinvey-nativescript-sdk",
-  "version": "3.9.0",
+  "version": "3.9.1",
   "description": "Kinvey JavaScript SDK for NativeScript applications.",
   "homepage": "http://www.kinvey.com",
   "bugs": {
@@ -27,12 +27,10 @@
   "dependencies": {
     "es6-promise": "4.1.0",
     "events": "1.1.1",
-    "kinvey-js-sdk": "3.9.1",
-    "nativescript-nodeify": "0.5.5",
+    "kinvey-js-sdk": "3.8.1",
     "nativescript-sqlite": "1.1.7"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "0.4.5",
     "rimraf": "2.6.2",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
