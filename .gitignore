@@ -5,8 +5,8 @@ npm-debug.log
 package-lock.json
 
 # Src files
-*.js
-!hooks/**/*.js
+src/**/*.js
+push/**/*.js
 
 # MacOS Files
 .DS_Store
