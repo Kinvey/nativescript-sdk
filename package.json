@@ -1,6 +1,6 @@
 {
   "name": "kinvey-nativescript-sdk",
-  "version": "3.9.1",
+  "version": "3.9.2-beta.8",
   "description": "Kinvey JavaScript SDK for NativeScript applications.",
   "homepage": "http://www.kinvey.com",
   "bugs": {
@@ -22,13 +22,17 @@
     "ci.tslint": "npm i && npm run lint",
     "lint": "tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts",
     "preversion": "rm -rf node_modules && npm install && npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "postinstall": "node postinstall.js",
+    "preuninstall": "node preuninstall.js"
   },
   "dependencies": {
     "es6-promise": "4.1.0",
     "events": "1.1.1",
-    "kinvey-js-sdk": "3.8.1",
-    "nativescript-sqlite": "1.1.7"
+    "kinvey-js-sdk": "3.9.2-beta.3",
+    "nativescript-hook": "0.2.1",
+    "nativescript-sqlite": "1.1.7",
+    "replace-in-file": "3.0.0-beta.2"
   },
   "devDependencies": {
     "rimraf": "2.6.2",
@@ -39,6 +43,13 @@
     "typescript": "2.3.4"
   },
   "nativescript": {
+    "hooks": [
+      {
+        "type": "before-prepare",
+        "script": "hooks/before-prepare.js",
+        "inject": true
+      }
+    ],
     "platforms": {
       "ios": "3.0.0",
       "android": "3.0.0"

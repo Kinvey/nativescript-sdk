@@ -17,8 +17,6 @@ npm-debug.log
 *.d.ts
 !kinvey.d.ts
 *.js.map
-hooks/
-scripts/
 README.md
 CONTRIBUTING.md
 CHANGELOG.md
