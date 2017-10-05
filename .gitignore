@@ -6,6 +6,7 @@ package-lock.json
 
 # Src files
 *.js
+!hooks/**/*.js
 
 # MacOS Files
 .DS_Store
