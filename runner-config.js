@@ -39,7 +39,7 @@ const runner = new Runner({
             () => ({
                 tests: walk(path.join(appName, 'app', 'tests'), {
                     nodir: true
-                }).map(f => `./${path.relative(appPath, f.path)}`),
+                }).map(f => String.raw`./${path.relative(appPath, f.path)}`.replace(/\\/g, '/')),
                 logServerPort
             }),
             path.join(appPath, 'testConfig.js')
