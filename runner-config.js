@@ -18,6 +18,9 @@ const {
 const appName = 'KinveyNativescriptTestApp';
 const appRootPath = path.join(__dirname, appName);
 const appPath = path.join(appRootPath, 'app');
+const appTestsPath = path.join(appPath, 'tests');
+const shimSpecificTestsPath = path.join(__dirname, 'test', 'tests');
+const commonTestsPath = path.join(__dirname, 'node_modules', 'kinvey-js-sdk', 'test', 'integration');
 
 let logServerPort;
 
@@ -31,8 +34,12 @@ const runner = new Runner({
         }),
         copy(path.join(__dirname, 'test', 'template'), appPath),
         copy(
-            path.join(__dirname, 'test', 'tests'),
-            path.join(appPath, 'tests')
+            shimSpecificTestsPath,
+            appTestsPath
+        ),
+        copy(
+            commonTestsPath,
+            appTestsPath
         ),
         processTemplateFile(
             path.join(appPath, 'testConfig.template.hbs'),
