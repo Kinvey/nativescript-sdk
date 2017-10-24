@@ -110,7 +110,7 @@ class SQLiteAdapter {
       })
       .catch(() => {
         throw new NotFoundError(`An entity with _id = ${id} was not found in the ${collection}`
-            + ` collection on the ${this.name} SQLite database.`);
+          + ` collection on the ${this.name} SQLite database.`);
       });
   }
 
@@ -138,6 +138,20 @@ class SQLiteAdapter {
 
     return this.openTransaction(collection, queries, null, true)
       .then(() => (singular ? entities[0] : entities));
+  }
+
+  removeIds(collection, ids) {
+    if (!ids.length) {
+      return Promise.resolve(null);
+    }
+
+    const param = ids.reduce((str, id, ind) => {
+      const escapedId = `"${id}"`;
+      return ind > 0 ? `${str}, ${escapedId}` : escapedId;
+    }, '');
+
+    const query = `DELETE FROM #{collection} WHERE key IN (${param})`;
+    return this.openTransaction(collection, query, undefined, true);
   }
 
   removeById(collection, id) {
