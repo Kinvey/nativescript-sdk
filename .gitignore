@@ -15,5 +15,5 @@ demo/platforms
 demo/node_modules
 demo/hooks
 
-KinveyNativescriptTestApp
+KinveyNativescriptTestApp/
 .vscode
