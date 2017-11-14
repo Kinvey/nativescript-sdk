@@ -27,7 +27,7 @@
     "events": "1.1.1",
     "kinvey-js-sdk": "3.6.0-ns.9",
     "nativescript-sqlite": "1.1.7",
-    "universal-runner": "file:../../../stuff/universal-runner"
+    "universal-runner": "../js-universal-test-runner"
   },
   "devDependencies": {
     "fs-extra": "^4.0.1",

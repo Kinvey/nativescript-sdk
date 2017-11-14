@@ -51,7 +51,11 @@ const runner = new Runner({
             }),
             path.join(appPath, 'testConfig.js')
         ),
-        copyTestLibs(path.join(appPath, 'libs')),
+        runCommand({
+            command: 'npm',
+            args: ['install', 'kinvey-nativescript-sdk', '../', '--save'],
+            cwd: appRootPath
+        }),
         copyTestRunner(appPath),
         runCommand({
             command: 'adb',
