@@ -15,7 +15,9 @@ const {
     }
 } = require('universal-runner');
 
+const testedSdkVersion = '3.7.2'
 const appName = 'KinveyNativescriptTestApp';
+const currentVersionArchiveFileName = `kinvey-nativescript-sdk-${testedSdkVersion}.tgz`;
 const appRootPath = path.join(__dirname, appName);
 const appPath = path.join(appRootPath, 'app');
 const appTestsPath = path.join(appPath, 'tests');
@@ -53,7 +55,11 @@ const runner = new Runner({
         ),
         runCommand({
             command: 'npm',
-            args: ['install', 'kinvey-nativescript-sdk', '../', '--save'],
+            args: ['pack']
+        }),
+        runCommand({
+            command: 'npm',
+            args: ['install', '--production' , `../${currentVersionArchiveFileName}`],
             cwd: appRootPath
         }),
         copyTestRunner(appPath),
