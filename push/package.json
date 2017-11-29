@@ -1,6 +1,5 @@
 {
   "name" : "push",
-  "main" : "push",
   "types": "push.d.ts",
   "nativescript": {}
 }
