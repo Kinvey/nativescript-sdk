@@ -13,7 +13,7 @@ const {
         remove,
         processTemplateFile
     }
-} = require('universal-runner');
+} = require('kinvey-universal-runner');
 
 const testedSdkVersion = '3.7.2'
 const appName = 'KinveyNativescriptTestApp';

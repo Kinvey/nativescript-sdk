@@ -35,7 +35,7 @@
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
     "typescript": "2.3.4",
-    "universal-runner": "../js-universal-test-runner"
+    "kinvey-universal-runner": "^1.0.0"
   },
   "nativescript": {
     "platforms": {
