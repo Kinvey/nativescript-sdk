@@ -17,7 +17,6 @@ const {
 
 const testedSdkVersion = '3.7.2'
 const appName = 'KinveyNativescriptTestApp';
-const currentVersionArchiveFileName = `kinvey-nativescript-sdk-${testedSdkVersion}.tgz`;
 const appRootPath = path.join(__dirname, appName);
 const appPath = path.join(appRootPath, 'app');
 const appTestsPath = path.join(appPath, 'tests');
@@ -59,7 +58,7 @@ const runner = new Runner({
         }),
         runCommand({
             command: 'npm',
-            args: ['install', '--production' , `../${currentVersionArchiveFileName}`],
+            args: ['install', 'kinvey-nativescript-sdk@3.8.0'],
             cwd: appRootPath
         }),
         copyTestRunner(appPath),
