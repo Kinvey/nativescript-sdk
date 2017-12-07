@@ -59,7 +59,7 @@ const runner = new Runner({
         }),
         runCommand({
             command: 'npm',
-            args: ['install', '--production' , `../${currentVersionArchiveFileName}`],
+            args: ['install', '--production',  '--save', `../${currentVersionArchiveFileName}`],
             cwd: appRootPath
         }),
         copyTestRunner(appPath),

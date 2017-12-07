@@ -1,6 +1,6 @@
 {
   "name": "kinvey-nativescript-sdk",
-  "version": "3.7.2",
+  "version": "3.9.2",
   "description": "Kinvey JavaScript SDK for NativeScript applications.",
   "homepage": "http://www.kinvey.com",
   "bugs": {
@@ -18,26 +18,43 @@
     "url": "git@github.com:Kinvey/nativescript-sdk"
   },
   "scripts": {
-    "build": "rm -rf 'src/**/*.js' && rm -rf 'push/**/*.js' && tsc",
+    "build": "rm -rf src/**/*.js && rm -rf push/**/*.js && npm i && tsc",
+    "ci.tslint": "npm i && npm run lint",
+    "lint": "tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts",
     "preversion": "rm -rf node_modules && npm install && npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "postinstall": "node postinstall.js",
+    "preuninstall": "node preuninstall.js"
   },
   "dependencies": {
     "es6-promise": "4.1.0",
     "events": "1.1.1",
-    "kinvey-js-sdk": "3.6.0-ns.9",
-    "nativescript-sqlite": "1.1.7"
+    "kinvey-js-sdk": "3.9.2",
+    "nativescript-hook": "0.2.1",
+    "nativescript-sqlite": "1.1.7",
+    "replace-in-file": "3.0.0-beta.2"
   },
   "devDependencies": {
+    "nativescript-dev-typescript": "0.4.5",
     "fs-extra": "^4.0.1",
     "klaw-sync": "^3.0.0",
-    "nativescript-dev-typescript": "0.4.5",
+    "rimraf": "2.6.2",
     "tns-core-modules": "3.0.1",
     "tns-platform-declarations": "3.0.1",
-    "typescript": "2.3.4",
+    "typescript": "2.3.4"
     "kinvey-universal-runner": "^1.0.0"
+    "tslint": "5.7.0",
+    "tslint-config-airbnb": "5.3.0",
+    "typescript": "2.3.4"
   },
   "nativescript": {
+    "hooks": [
+      {
+        "type": "before-prepare",
+        "script": "hooks/before-prepare.js",
+        "inject": true
+      }
+    ],
     "platforms": {
       "ios": "3.0.0",
       "android": "3.0.0"

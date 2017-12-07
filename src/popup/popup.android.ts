@@ -13,9 +13,9 @@ import { WebView } from 'ui/web-view';
  */
 
 class OAuthWebViewHelper extends android.webkit.WebViewClient {
-  private _view: any
+  private _view: any;
   private _origClient: any;
-  private _webViewIntercept: (WebView, error?, url?) => boolean;
+  private _webViewIntercept: (webView, error?, url?) => boolean;
 
   constructor() {
     super();
@@ -92,21 +92,21 @@ class OAuthWebViewHelper extends android.webkit.WebViewClient {
     const view: android.webkit.WebView = arguments[0];
 
     if (arguments.length === 4) {
-      var errorCode: number = arguments[1];
-      var description: string = arguments[2];
-      var failingUrl: string = arguments[3];
+      const errorCode: number = arguments[1];
+      const description: string = arguments[2];
+      const failingUrl: string = arguments[3];
 
-      this._webViewIntercept(this._view, null, failingUrl)
+      this._webViewIntercept(this._view, null, failingUrl);
       super.onReceivedError(view, errorCode, description, failingUrl);
 
       if (this._view) {
         this._view._onLoadFinished(failingUrl, `${description}(${errorCode})`);
       }
     } else {
-      var request: any = arguments[1];
-      var error: any = arguments[2];
+      const request: any = arguments[1];
+      const error: any = arguments[2];
 
-      this._webViewIntercept(this._view, error)
+      this._webViewIntercept(this._view, error);
       super.onReceivedError(view, request, error);
 
       if (this._view) {
@@ -118,7 +118,7 @@ class OAuthWebViewHelper extends android.webkit.WebViewClient {
 
 class OAuthPageProvider {
   private _authUrl: string;
-  private _webViewIntercept: (WebView, error?, url?) => boolean;
+  private _webViewIntercept: (webView, error?, url?) => boolean;
 
   constructor(authUrl, webViewIntercept) {
     this._authUrl = authUrl;
@@ -154,7 +154,7 @@ export class Popup extends EventEmitter {
 
         try {
           if (error && error.userInfo && error.userInfo.allValues && error.userInfo.allValues.count > 0) {
-            let val0 = error.userInfo.allValues[0];
+            const val0 = error.userInfo.allValues[0];
             if (val0.absoluteString) {
               urlStr = val0.absoluteString;
             } else if (val0.userInfo && val0.userInfo.allValues && val0.userInfo.allValues.count > 0) {

@@ -2,7 +2,8 @@ import { Promise } from 'es6-promise';
 import { isDefined } from 'kinvey-js-sdk/dist/utils';
 import { KinveyError } from 'kinvey-js-sdk/dist/errors';
 import { PushCommon } from './common';
-import { PushConfig, iOSPushConfig } from './';
+import { PushConfig, IOSPushConfig } from './';
+// tslint:disable-next-line:variable-name
 let PushPlugin;
 
 try {
@@ -11,9 +12,9 @@ try {
   // Just catch the error
 }
 
-class iOSPush extends PushCommon {
+class IOSPush extends PushCommon {
   protected _registerWithPushPlugin(options = <PushConfig>{}): Promise<string> {
-    const config = options.ios || <iOSPushConfig>{};
+    const config = options.ios || <IOSPushConfig>{};
 
     return new Promise((resolve, reject) => {
       if (isDefined(PushPlugin) === false) {
@@ -54,5 +55,6 @@ class iOSPush extends PushCommon {
   }
 }
 
-const Push = new iOSPush();
+// tslint:disable-next-line:variable-name
+const Push = new IOSPush();
 export { Push };

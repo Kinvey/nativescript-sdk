@@ -1,8 +1,9 @@
-declare const java: any, org: any;
+declare const java: any;
+declare const org: any;
 
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { Kinvey } from 'kinvey-nativescript-sdk';
-import * as fs from "tns-core-modules/file-system";
+import * as fs from 'tns-core-modules/file-system';
 import * as imageSource from 'tns-core-modules/image-source';
 import * as platform from 'tns-core-modules/platform';
 import * as http from 'http';
@@ -15,7 +16,7 @@ const log = (msg, obj?) => {
 };
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <ActionBar title="My App"></ActionBar>
     <StackLayout>
@@ -47,7 +48,7 @@ export class AppComponent {
       })
       .then((files) => {
         log('deleting');
-        const prms = files.map(f => {
+        const prms = files.map((f) => {
           return Kinvey.Files.removeById(f._id);
         });
         return Promise.all(prms);
@@ -72,7 +73,7 @@ export class AppComponent {
       .then((resp: any) => {
         log('uploaded');
       })
-      .catch(err => {
+      .catch((err) => {
         log('defEH: ', err.message);
       });
   }

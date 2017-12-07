@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.8.0](https://github.com/Kinvey/nativescript-sdk/tree/v3.8.0) (2017-08-23)
+[Full Changelog](https://github.com/Kinvey/nativescript-sdk/compare/v3.7.2...v3.8.0)<br/>
+
+### Added
+_None_
+
+### Removed
+_None_
+
+### Changed/Fixed
+- Updated [kinvey-js-sdk](https://github.com/Kinvey/js-sdk) dependency to [3.8.0](https://github.com/Kinvey/js-sdk/tree/v3.8.0)
+
+### Merged Pull Requests
+- Active User Storage [#1720](https://github.com/Kinvey/nativescript-sdk/pull/17)
+
+### Closed Issues
+_None_
+
 ## [3.7.2](https://github.com/Kinvey/nativescript-sdk/tree/v3.7.2) (2017-07-28)
 [Full Changelog](https://github.com/Kinvey/nativescript-sdk/compare/v3.7.1...v3.7.2)<br/>
 

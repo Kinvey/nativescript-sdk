@@ -148,7 +148,7 @@ export class PushCommon extends EventEmitter {
         }
 
         return null;
-      })
+      });
   }
 
   private _saveTokenToCache(token: any, options = <PushConfig>{}): Promise<string> {
@@ -187,7 +187,7 @@ export class PushCommon extends EventEmitter {
     return request.execute()
       .catch((error) => {
         if (error instanceof NotFoundError) {
-            return {};
+          return {};
         }
 
         throw error;

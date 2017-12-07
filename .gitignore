@@ -6,6 +6,7 @@ package-lock.json
 
 # Src files
 src/**/*.js
+push/**/*.js
 
 # MacOS Files
 .DS_Store
@@ -14,6 +15,3 @@ src/**/*.js
 demo/platforms
 demo/node_modules
 demo/hooks
-
-KinveyNativescriptTestApp/
-.vscode
