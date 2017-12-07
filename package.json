@@ -43,7 +43,7 @@
     "typescript": "2.3.4",
     "kinvey-universal-runner": "^1.0.0",
     "fs-extra": "^4.0.1",
-    "klaw-sync": "^3.0.0",
+    "klaw-sync": "^3.0.0"
   },
   "nativescript": {
     "hooks": [
