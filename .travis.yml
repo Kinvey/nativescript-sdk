@@ -1,63 +1,27 @@
-matrix:
+language: node_js
+node_js:
+- '9'
+script: echo "No tests to run"
+jobs:
   include:
-    - stage: "Lint"
-      language: node_js
-      os: linux
-      node_js: "6"
-      script: npm run ci.tslint
-    - stage: "WebPack"
-      os: osx
-      env:
-        - Webpack="iOS"
-      osx_image: xcode8.3
-      language: node_js 
-      node_js: "6"
-      jdk: oraclejdk8
-      script: cd demo && npm run ci.ios.webpack
-    - language: android
-      os: linux
-      env:
-        - Webpack="Android"
-      jdk: oraclejdk8
-      before_install: nvm install 6.10.3
-      script: cd demo && npm run ci.android.webpack
-    - stage: "Build"
-      env: 
-        - BuildAndroid="25"
-      language: android
-      os: linux
-      jdk: oraclejdk8
-      before_install: nvm install 6.10.3
-      script:
-        - cd demo && npm run ci.android.build
-    - os: osx
-      env: 
-        - BuildiOS="10.3"
-        - Xcode="8.3"
-      osx_image: xcode8.3
-      language: node_js 
-      node_js: "6"
-      jdk: oraclejdk8
-      script: 
-        - cd demo && npm run ci.ios.build
-android:
-  components:
-    - tools
-    - platform-tools
-    - build-tools-25.0.2
-    - android-25
-    - extra-android-m2repository
-
-before_cache:
-    - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-
-cache:
-    directories:
-        - .nvm
-        - $HOME/.gradle/caches/
-        - $HOME/.gradle/wrapper/
-
-install:
-    - echo no | npm install -g nativescript
-    - tns usage-reporting disable
-    - tns error-reporting disable
+  - name: deploy stable
+    if: tag =~ ^((?!-\w).)*$
+    deploy:
+      provider: npm
+      email: thomas.conner@me.com
+      api_key:
+        secure: PGAS6JLAeL+JVFnPXlf/og9CizIcNBX9AUfbgzG0HIwufL0bnLtVpvtTSV1wkENLrktxCFX2J1o2h24rBxTtSOL534TIHwMNfTHum5ydtQ510+4rWJoAJg43pGd93jBPsU2IsJB0MaZ+x/ZFmYhrcJMyf9mdVjccFpHtJzzfPWUQo4uAfIO+zsHM1U2NVAjFqQ4qBcJ4/KeN0+Vyh20t9NXxjE7HtWOaUMruu+Oe9qlnH3RSRwAc5hNjVispzw95IQbigJ+CslNU2ZkuqNDy9xYv8Fbe+hH5+N21lxDvFIG3v6F0DVxE+TkxFjJlQQ/8WKVdiY+BjkZ1/a7OTMp6YURoir5VgvvMX0Ro0FmGrKNGYYOfGjKGUDUNaid8xSABPmKH1IyNi86bbvbIgIL675TJhQC0XeCHrho6XAzPlFXvvIhLVHz8Yv+yeqEHOa+9Tup90iSnupu0XpQFSiXr6/Fd2DAFB1OFZNyxqRhtZP2Ig+fVUKqCW+ZcmrjaOf9SyI6JYyys4Zk2//RbAvdJuUAKAR60vy44js508LNAEK6ih4aHK1J+6C+BbVY6NJQlll11tyM5vkN+KFbpoj74SLa5pxzjmZrfdCEbn1+kq/pEWdyjPLqlSnO70bpvt7jEhlOXC39VJFDncuYFWK6efJl32sQOegd19riQ2b2xePU=
+      on:
+        all_branches: true
+        tags: true
+  - name: deploy beta
+    if: tag =~ tag =~ ^v?([0-9])*\.[0-9]*\.[0-9]*-\w+$
+    deploy:
+      provider: npm
+      tag: beta
+      email: thomas.conner@me.com
+      api_key:
+        secure: PGAS6JLAeL+JVFnPXlf/og9CizIcNBX9AUfbgzG0HIwufL0bnLtVpvtTSV1wkENLrktxCFX2J1o2h24rBxTtSOL534TIHwMNfTHum5ydtQ510+4rWJoAJg43pGd93jBPsU2IsJB0MaZ+x/ZFmYhrcJMyf9mdVjccFpHtJzzfPWUQo4uAfIO+zsHM1U2NVAjFqQ4qBcJ4/KeN0+Vyh20t9NXxjE7HtWOaUMruu+Oe9qlnH3RSRwAc5hNjVispzw95IQbigJ+CslNU2ZkuqNDy9xYv8Fbe+hH5+N21lxDvFIG3v6F0DVxE+TkxFjJlQQ/8WKVdiY+BjkZ1/a7OTMp6YURoir5VgvvMX0Ro0FmGrKNGYYOfGjKGUDUNaid8xSABPmKH1IyNi86bbvbIgIL675TJhQC0XeCHrho6XAzPlFXvvIhLVHz8Yv+yeqEHOa+9Tup90iSnupu0XpQFSiXr6/Fd2DAFB1OFZNyxqRhtZP2Ig+fVUKqCW+ZcmrjaOf9SyI6JYyys4Zk2//RbAvdJuUAKAR60vy44js508LNAEK6ih4aHK1J+6C+BbVY6NJQlll11tyM5vkN+KFbpoj74SLa5pxzjmZrfdCEbn1+kq/pEWdyjPLqlSnO70bpvt7jEhlOXC39VJFDncuYFWK6efJl32sQOegd19riQ2b2xePU=
+      on:
+        all_branches: true
+        tags: true

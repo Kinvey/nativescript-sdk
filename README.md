@@ -1,65 +1,32 @@
-[![Build Status](https://travis-ci.org/Kinvey/nativescript-sdk.svg?branch=master)](https://travis-ci.org/Kinvey/nativescript-sdk)
-
 # Overview
 
 [Kinvey](http://www.kinvey.com) (pronounced Kin-vey, like convey) makes it ridiculously easy for developers to setup, use and operate a cloud backend for their mobile apps. They don't have to worry about connecting to various cloud services, setting up servers for their backend, or maintaining and scaling them.
 
-This SDK makes it easy to connect your [Nativescript](https://www.nativescript.org/) apps with Kinvey.
+## Getting Started
 
-## How to use
-
-#### Install the NativeScript plugin
-
-```
-tns plugin add kinvey-nativescript-sdk
-```
-
-#### Install via npm
+Install and save the Kinvey NativeScript SDK:
 
 ```javascript
 npm install --save kinvey-nativescript-sdk
 ```
-*Note: It is recommended to use **npm version 4.x.x**. Or check the latest npm version NativeScript supports.*
 
-#### Import the Kinvey NativeScript SDK (ES6/TypeScript):
+Import the Kinvey NativeScript SDK:
 
 ```javascript
-import { Kinvey } from 'kinvey-nativescript-sdk';
+const Kinvey = require('kinvey-nativescript-sdk');
 ```
 
-A [TypeScript](https://www.typescriptlang.org/) type definition file is included in the distribution and will automatically be picked up by the TypeScript compiler.
+## Mobile OS Compatibility
 
+The Kinvey NativeScript SDK supports the following BMobile OS versions:
 
-#### Build from Source
-
-The `master` branch represents the latest stable code in the SDK. To build the SDK, use the following - 
-
-```
-npm run build
-```
-
-To test - 
-
-```
-npm run test
-```
-
-_Note: Before running any tests you will need to run `npm install` to install any dependencies required._
-
-
-All Kinvey JS SDKs are organized as a common core and platform specific shims. To build the entire SDK source - 
-- Clone and build the [core kinvey-js-sdk](https://github.com/Kinvey/js-sdk). The NativeScript shim currently requires that you use the `nativescript` branch of the core.
-- Edit the `package.json` of this [repo](https://github.com/Kinvey/nativescript-sdk/blob/master/package.json) to point to your local copy of the `kinvey-js-sdk`.
-- Build this repo.
-
+- iOS: 10.0+
+- Android: 2.3.3+
 
 ## Documentation
 
-For detailed documentation on using the SDK, see http://devcenter.kinvey.com/nativescript
-
+For more detailed documentation, see [Kinvey DevCenter](http://devcenter.kinvey.com/angular).
 
 ## License
-See [LICENSE](LICENSE) for details.
 
-## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details on reporting bugs and making contributions.
+See [LICENSE](LICENSE) for details.
