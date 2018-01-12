@@ -1,6 +1,6 @@
 /**
  * kinvey-nativescript-sdk - Kinvey NativeScript SDK for developing NativeScript applications.
- * @version v3.9.3
+ * @version v3.9.5
  * @author Kinvey, Inc.
  * @link http://www.kinvey.com
  * @license Apache-2.0
@@ -3895,7 +3895,7 @@ var Query = function () {
   }, {
     key: 'addFilter',
     value: function addFilter(field, condition, values) {
-      if ((0, _utils.isDefined)(condition) && (0, _utils.isDefined)(values)) {
+      if ((0, _utils.isDefined)(condition) && ((0, _utils.isDefined)(values) || arguments.length === 3)) {
         if (!(0, _isPlainObject2.default)(this.filter[field])) {
           this.filter[field] = {};
         }
@@ -4003,21 +4003,6 @@ var Query = function () {
 
       _log.Log.debug('Data length after applying query filter', json.filter, data.length);
 
-      // Remove fields
-      if (Array.isArray(json.fields) && json.fields.length > 0) {
-        _log.Log.debug('Removing fields from data', json.fields);
-        data = data.map(function (item) {
-          var keys = Object.keys(item);
-          keys.forEach(function (key) {
-            if (json.fields.indexOf(key) === -1) {
-              delete item[key];
-            }
-          });
-
-          return item;
-        });
-      }
-
       /* eslint-disable no-restricted-syntax, no-prototype-builtins  */
       // Sorting.
       if ((0, _utils.isDefined)(json.sort)) {
@@ -4044,6 +4029,21 @@ var Query = function () {
         });
       }
       /* eslint-enable no-restricted-syntax, no-prototype-builtins */
+
+      // Remove fields
+      if (Array.isArray(json.fields) && json.fields.length > 0) {
+        _log.Log.debug('Removing fields from data', json.fields);
+        data = data.map(function (item) {
+          var keys = Object.keys(item);
+          keys.forEach(function (key) {
+            if (json.fields.indexOf(key) === -1) {
+              delete item[key];
+            }
+          });
+
+          return item;
+        });
+      }
 
       // Limit and skip.
       if ((0, _utils.isNumber)(json.skip)) {
@@ -28075,7 +28075,7 @@ module.exports = require("ui/web-view");
 /*! all exports used */
 /***/ (function(module, exports) {
 
-module.exports = {"private":true,"version":"3.9.3","name":"kinvey-nativescript-sdk","description":"Kinvey NativeScript SDK for developing NativeScript applications.","author":"Kinvey, Inc.","homepage":"http://www.kinvey.com","license":"Apache-2.0","main":"kinvey-nativescript-sdk.min.js","typings":"kinvey.d.ts","dependencies":{"nativescript-sqlite":"~1.1.11","rxjs":"~5.5.5"},"scripts":{"prebuild":"rm -rf dist","build":"npm run build:android && npm run build:ios","build:android":"webpack --config webpack.config.js --env.android","build:ios":"webpack --config webpack.config.js --env.ios","lint":"tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts","release":"npm run build -- --env.uglify && ./scripts/push.sh","release:android":"npm run build:android -- --env.uglify","release:ios":"npm run build:ios -- --env.uglify","postrelease":"rm -rf tmp"},"files":["kinvey-nativescript-sdk.ios.min.js","kinvey-nativescript-sdk.ios.min.js.map","kinvey-nativescript-sdk.android.min.js","kinvey-nativescript-sdk.android.min.js.map","kinvey.d.ts","platforms/android/include.gradle","platforms/ios/Podfile"],"nativescript":{"platforms":{"ios":"3.0.0","android":"3.0.0"}}}
+module.exports = {"private":true,"version":"3.9.5","name":"kinvey-nativescript-sdk","description":"Kinvey NativeScript SDK for developing NativeScript applications.","author":"Kinvey, Inc.","homepage":"http://www.kinvey.com","license":"Apache-2.0","main":"kinvey-nativescript-sdk.min.js","typings":"kinvey.d.ts","dependencies":{"nativescript-sqlite":"~1.1.11","rxjs":"~5.5.5"},"scripts":{"prebuild":"rm -rf dist","build":"npm run build:android && npm run build:ios","build:android":"webpack --config webpack.config.js --env.android","build:ios":"webpack --config webpack.config.js --env.ios","lint":"tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts","release":"npm run build -- --env.uglify && ./scripts/push.sh","release:android":"npm run build:android -- --env.uglify","release:ios":"npm run build:ios -- --env.uglify","postrelease":"rm -rf tmp"},"files":["kinvey-nativescript-sdk.ios.min.js","kinvey-nativescript-sdk.ios.min.js.map","kinvey-nativescript-sdk.android.min.js","kinvey-nativescript-sdk.android.min.js.map","kinvey.d.ts","platforms/android/include.gradle","platforms/ios/Podfile"],"nativescript":{"platforms":{"ios":"3.0.0","android":"3.0.0"}}}
 
 /***/ }),
 /* 328 */
@@ -28231,6 +28231,15 @@ Object.defineProperty(exports, 'Query', {
   enumerable: true,
   get: function get() {
     return _query.Query;
+  }
+});
+
+var _request = __webpack_require__(/*! ./request */ 7);
+
+Object.defineProperty(exports, 'Properties', {
+  enumerable: true,
+  get: function get() {
+    return _request.Properties;
   }
 });
 
@@ -31173,7 +31182,10 @@ var LiveCollectionManager = exports.LiveCollectionManager = function () {
 
       return this._makeSubscriptionRequest(name, '_subscribe').then(function () {
         var channelName = _this._buildChannelName(name);
-        (0, _liveService.getLiveService)().subscribeToChannel(channelName, receiver);
+        var personalChannelName = _this._buildPersonalChannelName(name);
+        var liveService = (0, _liveService.getLiveService)();
+        liveService.subscribeToChannel(channelName, receiver);
+        liveService.subscribeToChannel(personalChannelName, receiver);
       });
     }
   }, {
@@ -31187,7 +31199,10 @@ var LiveCollectionManager = exports.LiveCollectionManager = function () {
 
       return this._makeSubscriptionRequest(name, '_unsubscribe').then(function () {
         var channelName = _this2._buildChannelName(name);
-        (0, _liveService.getLiveService)().unsubscribeFromChannel(channelName);
+        var personalChannelName = _this2._buildPersonalChannelName(name);
+        var liveService = (0, _liveService.getLiveService)();
+        liveService.unsubscribeFromChannel(channelName);
+        liveService.unsubscribeFromChannel(personalChannelName);
       });
     }
 
@@ -31201,6 +31216,13 @@ var LiveCollectionManager = exports.LiveCollectionManager = function () {
     key: '_buildChannelName',
     value: function _buildChannelName(collectionName) {
       return this._client.appKey + '.c-' + collectionName;
+    }
+  }, {
+    key: '_buildPersonalChannelName',
+    value: function _buildPersonalChannelName(collectionName) {
+      var channelName = this._buildChannelName(collectionName);
+      var userId = this._client.getActiveUser()._id;
+      return channelName + '.u-' + userId;
     }
 
     /**
