@@ -1,6 +1,6 @@
 /**
  * kinvey-nativescript-sdk - Kinvey NativeScript SDK for developing NativeScript applications.
- * @version v3.9.5
+ * @version v3.9.6
  * @author Kinvey, Inc.
  * @link http://www.kinvey.com
  * @license Apache-2.0
@@ -28134,7 +28134,7 @@ module.exports = require("ui/web-view");
 /*! all exports used */
 /***/ (function(module, exports) {
 
-module.exports = {"private":true,"version":"3.9.5","name":"kinvey-nativescript-sdk","description":"Kinvey NativeScript SDK for developing NativeScript applications.","author":"Kinvey, Inc.","homepage":"http://www.kinvey.com","license":"Apache-2.0","main":"kinvey-nativescript-sdk.min.js","typings":"kinvey.d.ts","dependencies":{"nativescript-sqlite":"~1.1.11","rxjs":"~5.5.5"},"scripts":{"prebuild":"rm -rf dist","build":"npm run build:android && npm run build:ios","build:android":"webpack --config webpack.config.js --env.android","build:ios":"webpack --config webpack.config.js --env.ios","lint":"tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts","release":"npm run build -- --env.uglify && ./scripts/push.sh","release:android":"npm run build:android -- --env.uglify","release:ios":"npm run build:ios -- --env.uglify","postrelease":"rm -rf tmp"},"files":["kinvey-nativescript-sdk.ios.min.js","kinvey-nativescript-sdk.ios.min.js.map","kinvey-nativescript-sdk.android.min.js","kinvey-nativescript-sdk.android.min.js.map","kinvey.d.ts","platforms/android/include.gradle","platforms/ios/Podfile"],"nativescript":{"platforms":{"ios":"3.0.0","android":"3.0.0"}}}
+module.exports = {"private":true,"version":"3.9.6","name":"kinvey-nativescript-sdk","description":"Kinvey NativeScript SDK for developing NativeScript applications.","author":"Kinvey, Inc.","homepage":"http://www.kinvey.com","license":"Apache-2.0","main":"kinvey-nativescript-sdk.min.js","typings":"kinvey.d.ts","dependencies":{"nativescript-sqlite":"~1.1.11","rxjs":"~5.5.5"},"scripts":{"prebuild":"rm -rf dist","build":"npm run build:android && npm run build:ios","build:android":"webpack --config webpack.config.js --env.android","build:ios":"webpack --config webpack.config.js --env.ios","lint":"tslint **/*.ts --exclude **/node_modules/**/* --exclude **/*.d.ts","release":"npm run build -- --env.uglify && ./scripts/push.sh","release:android":"npm run build:android -- --env.uglify","release:ios":"npm run build:ios -- --env.uglify","postrelease":"rm -rf tmp"},"files":["kinvey-nativescript-sdk.ios.min.js","kinvey-nativescript-sdk.ios.min.js.map","kinvey-nativescript-sdk.android.min.js","kinvey-nativescript-sdk.android.min.js.map","kinvey.d.ts","platforms/android/include.gradle","platforms/ios/Podfile"],"nativescript":{"platforms":{"ios":"3.0.0","android":"3.0.0"}}}
 
 /***/ }),
 /* 328 */
