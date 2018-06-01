@@ -1,5 +1,5 @@
 {
-  "version": "3.11.0",
+  "version": "3.11.1",
   "name": "kinvey-nativescript-sdk",
   "description": "Kinvey NativeScript SDK for developing NativeScript applications.",
   "author": "Kinvey, Inc.",
@@ -12,6 +12,7 @@
     "rxjs": "~5.5.5"
   },
   "files": [
+    "file-upload-worker-android.js",
     "kinvey-nativescript-sdk.ios.js",
     "kinvey-nativescript-sdk.ios.js.map",
     "kinvey-nativescript-sdk.android.js",
