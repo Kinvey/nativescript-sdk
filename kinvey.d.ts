@@ -454,30 +454,6 @@ export namespace Kinvey {
     unregisterFromLiveService(): Promise<void>;
   }
 
-  // PushOptions interface
-  interface PushOptions {
-    android?: {
-      senderID: string
-    };
-    ios?: {
-      alert?: boolean,
-      badge?: boolean,
-      sound?: boolean
-    };
-  }
-
-  // Push class
-  export class Push {
-    private constructor();
-    static pathname: string;
-    static client: Client;
-    static isSupported(): boolean;
-    static onNotification(listener: (notifaction: any) => void);
-    static onceNotification(listener: (notifaction: any) => void);
-    static register(options: PushOptions): Promise<string>;
-    static unregister(): Promise<null>;
-  }
-
   // Error classes
   export abstract class BaseError {
     name: string;
@@ -968,30 +944,6 @@ export class User {
   static unregisterFromLiveService(): Promise<void>;
   registerForLiveService(): Promise<void>;
   unregisterFromLiveService(): Promise<void>;
-}
-
-// PushOptions interface
-interface PushOptions {
-  android?: {
-    senderID: string
-  };
-  ios?: {
-    alert?: boolean,
-    badge?: boolean,
-    sound?: boolean
-  };
-}
-
-// Push class
-export class Push {
-  private constructor();
-  static pathname: string;
-  static client: Client;
-  static isSupported(): boolean;
-  static onNotification(listener: (notifaction: any) => void);
-  static onceNotification(listener: (notifaction: any) => void);
-  static register(options: PushOptions): Promise<string>;
-  static unregister(): Promise<null>;
 }
 
 // Error classes
