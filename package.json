@@ -1,5 +1,5 @@
 {
-  "version": "3.11.6",
+  "version": "3.11.7",
   "name": "kinvey-nativescript-sdk",
   "description": "Kinvey NativeScript SDK for developing NativeScript applications.",
   "author": "Kinvey, Inc.",
@@ -8,8 +8,8 @@
   "main": "kinvey-nativescript-sdk.js",
   "typings": "kinvey.d.ts",
   "dependencies": {
-    "nativescript-sqlite": "~1.1.11",
-    "rxjs": "~5.5.5"
+    "nativescript-sqlite": "latest",
+    "rxjs": "~6.2.2"
   },
   "files": [
     "file-upload-worker-android.js",
@@ -24,6 +24,7 @@
     "push.ios.js",
     "push.ios.js.map",
     "platforms/android/include.gradle",
+    "platforms/android/AndroidManifest.xml",
     "platforms/ios/Podfile",
     "platforms/ios/app.entitlements"
   ],
