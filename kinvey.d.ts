@@ -280,9 +280,7 @@ export namespace Kinvey {
     find(query?: Query, options?: RequestOptions): Observable<T[]>;
     findById(id: string, options?: RequestOptions): Observable<T>;
     group(aggregation: Aggregation, options?: RequestOptions): Observable<{}>;
-    count(query?: Query, options?: RequestOptions): Observable<{
-      count: number
-    }>;
+    count(query?: Query, options?: RequestOptions): Observable<number>;
     create(entities: {}, options?: RequestOptions): Promise<T>;
     update(entities: {}, options?: RequestOptions): Promise<T>;
     save(entity: {}, options?: RequestOptions): Promise<T>;
