@@ -1,6 +1,6 @@
 /**
  * kinvey-nativescript-sdk - Kinvey NativeScript SDK for developing NativeScript applications.
- * @version v3.12.2
+ * @version v3.12.3
  * @author Kinvey, Inc.
  * @link http://www.kinvey.com
  * @license Apache-2.0
