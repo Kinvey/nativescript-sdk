@@ -1,4 +1,4 @@
-**IMPORTANT: This repository is now moved to: https://github.com/Kinvey/js-sdk/tree/master/packages/nativescript-sdk**
+**IMPORTANT: The Kinvey NativeScript SDK repository has now moved to: https://github.com/Kinvey/js-sdk/tree/master/packages/nativescript-sdk. Please go to this repository to submit issues and pull requests.**
 
 # Overview
 
